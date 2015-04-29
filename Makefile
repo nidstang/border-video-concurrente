@@ -1,7 +1,7 @@
 
-#FLAGS=-g -pg 
+FLAGS=-g -pg 
 #optimizaciones 
-FLAGS=-O3
+#FLAGS=-O3
 all: main.o filtros.o
 	gcc $(FLAGS) main.o filtros.o -o main.exe
 

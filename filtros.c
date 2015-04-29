@@ -16,9 +16,9 @@ void aplicaFiltro2D(float* imgIn,float* imgOut,int ancho,int alto,int umbral,int
      fflush (stdout);
      memcpy(filtro2D,&(filtros2D[filtro][0][0]),9*sizeof(float));
      
-     for(i=0;i<ancho;i++)
+     for(j=0;j<ancho;j++)
      {
-          for( j=0;j<alto;j++)
+          for( i=0;i<alto;i++)
           {       imgOut[ancho*i+j]=0;
                   for( i2=-1;i2<2;i2++)
                   for( j2=-1;j2<2;j2++)
@@ -52,9 +52,9 @@ void aplicaFiltro3D(float** imgIn,float* imgOut,int ancho,int alto,int umbral,in
       memcpy(filtro3D,filtro3DBilinear,27*sizeof(float));
      }
 
-     for(i=0;i<ancho;i++)
+     for(j=0;j<ancho;j++)
      {
-          for( j=0;j<alto;j++)
+          for( i=0;i<alto;i++)
           {       
 
 		  imgOut[ancho*i+j]=0;
@@ -83,9 +83,9 @@ void aplicaFiltro3D(float** imgIn,float* imgOut,int ancho,int alto,int umbral,in
 void unir(float** imgIn,float* imgOut,int ancho,int alto)
 {
      int i,j;
-for( i=0;i<ancho;i++)
+for( j=0;j<ancho;j++)
      {
-          for( j=0;j<alto;j++)
+          for( i=0;i<alto;i++)
           {
 		if(((imgIn[0][ancho*i+j])==1)||((imgIn[1][ancho*i+j])==1)||((imgIn[2][ancho*i+j])==1)||((imgIn[3][ancho*i+j])==1))
 			imgOut[ancho*i+j]=1;
@@ -114,7 +114,7 @@ void testBordes(float* imgIn,float* imgOut,int ancho,int alto,int rodajas,int um
     
 //iniciamos proceso
      //printf("%d rodajas\n", rodajas);
-  //  #pragma omp parallel for num_threads(NTHREADS)
+  //#pragma omp parallel for num_threads(NTHREADS)
     for( i=0;i<rodajas-1;i++)
     {
       //printf("%d rodaja\n", i);
